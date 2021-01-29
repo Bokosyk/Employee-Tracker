@@ -79,8 +79,22 @@ function handleChoices(answer) {
     //Switch is an alternative to else if statements
     //Research switch
     switch (answer.choice) {
+        case "add_department":
+            return  addDep();
+        case "add_role":
+            return addRole();
+        case "add_employee":
+            return addEmp();
+        case "view_department":
+            return viewDep();
+        case "view_role":
+            return viewRole();
         case "view_employee":
-            return  viewEmp();
+            return viewEmp();
+        case "update_employee_role":
+            return updateEmpRole();
+        case "EXIT":
+            return connection.end();
         
     
         
@@ -88,7 +102,7 @@ function handleChoices(answer) {
 }
 
 function viewEmp() {
-    console.log("this fucking works")
+    console.log("this works");
 }
 
 // Runs function

@@ -17,3 +17,5 @@ class DB {
   }
 
 };
+
+module.exports = new DB(connection);
