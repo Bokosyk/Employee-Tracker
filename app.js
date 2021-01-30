@@ -101,6 +101,7 @@ function handleChoices(answer) {
     }
 }
 
+// WORKS
 function addDep() {
     //prompts user
     inquirer
@@ -226,7 +227,27 @@ function addEmp() {
     })
 }
 
+// Works beautifully
 function viewDep() {
+    connection.query("SELECT * FROM department", function(err, results) {
+        if (err) throw err;
+        console.table(results);
+
+        
+    })
+
+    inquirer
+        .prompt([
+            {
+                name: "return",
+                type: "confirm",
+                message: "Go back to main menu?"
+            }
+        ])
+        .then(function() {
+            
+            init()
+        })
 
 }
 function viewRole() {
