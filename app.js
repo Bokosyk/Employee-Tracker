@@ -65,7 +65,6 @@ function loadMainMenu() {
             }
         ])
         .then(function(answer) {
-            console.log(answer)
 
             //Passes answer into function
             handleChoices(answer);
@@ -102,8 +101,20 @@ function handleChoices(answer) {
     }
 }
 
-function viewDep() {
-    
+function addDep() {
+    //prompts user
+    inquirer
+        .prompt([
+        {
+            name: "newDepartment",
+            type: "input",
+            message: "What is the name of the new department you'd like to add?"
+        },
+    ])
+    .then(function(answer) {
+        console.log(answer);
+    })
+
 }
 
 function viewEmp() {
