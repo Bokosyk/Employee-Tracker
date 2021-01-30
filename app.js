@@ -130,8 +130,43 @@ function addDep() {
 
 }
 
-function viewEmp() {
-    console.log("this works");
+function addRole() {
+    inquirer
+        .prompt([
+        {
+            name: "newTitle",
+            type: "input",
+            message: "Enter employee title:"
+        },
+        {
+            name: "newSalary",
+            type: "input",
+            message: "Enter employee salary:"
+        },
+        {
+            name: "departmentId",
+            type: "rawlist",
+            message: "What department does employee belong to?",
+           //Not finished yet
+        },
+    ])
+    .then(function(answer) {
+        connection.query(
+        "INSERT into role SET ?",
+        {
+            title: answer.newTitle,
+            salary: answer.newSalary,
+            department_id: answer.departmentId,
+        },
+        function(err) {
+            if (err) throw err;
+            console.log("Your new employee tab was created successfully!");
+
+            loadMainMenu();
+        }
+        );
+    })
+    
 }
 
 // Runs function
