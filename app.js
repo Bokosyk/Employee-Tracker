@@ -189,6 +189,7 @@ function addRole() {
     });
 }
 
+// Employee role prompt needs fixing
 function addEmp() {
     inquirer
     .prompt([
@@ -227,10 +228,12 @@ function addEmp() {
     })
 }
 
-// Works beautifully
+// Works but looks a little janky
 function viewDep() {
     connection.query("SELECT * FROM department", function(err, results) {
         if (err) throw err;
+
+        //Creates a table for displaying list of departments in console
         console.table(results);
 
         
@@ -245,12 +248,31 @@ function viewDep() {
             }
         ])
         .then(function() {
-            
+
             init()
         })
 
 }
+
+//Works but looks a little janky
 function viewRole() {
+    connection.query("SELECT * FROM role", function(err, results) {
+        if (err) throw err;
+        console.table(results);
+    })
+
+    inquirer
+        .prompt([
+            {
+                name: "return",
+                type: "confirm",
+                message: "Go back to main menu?"
+            }
+        ])
+        .then(function() {
+
+            init()
+        })
 
 }
 function viewEmp() {
