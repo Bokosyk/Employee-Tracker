@@ -54,8 +54,8 @@ function loadMainMenu() {
                         value: "update_employee_role",
                     },
                     {
-                        name: "EXIT",
-                        value: "exit",
+                        name: "Exit",
+                        value: "EXIT",
                     },
                 ]
 

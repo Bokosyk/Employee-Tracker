@@ -14,14 +14,7 @@ const connection = mysql.createConnection({
 })
 
 
-//Runs connection
-connection.connect(function(err) {
-    if (err) throw err;
-  console.log("connected as id " + connection.threadId + "\n");
-});
-
-
-// connection.connect()
+connection.connect()
 
 
 // Runs asyn function
