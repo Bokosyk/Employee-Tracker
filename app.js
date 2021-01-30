@@ -111,9 +111,22 @@ function addDep() {
             message: "What is the name of the new department you'd like to add?"
         },
     ])
-    .then(function(answer) {
-        console.log(answer);
-    })
+    .then(function(answer) { //Adds the input to the database
+        connection.query(
+            "INSERT INTO department SET ?",
+            {
+                name: answer.newDepartment,
+            },
+            function(err) {
+                if (err) throw err;
+                console.log("Your department was created successfully!");
+                
+                //load the main menu again
+                loadMainMenu();
+
+            }
+        );
+    });
 
 }
 
