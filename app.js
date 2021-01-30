@@ -130,62 +130,62 @@ function addDep() {
 
 }
 
+// **THIS IS BROKEN**
 function addRole() {
     //query the database for all departments
-    // connection.query("SELECT * FROM department", function (err, results) {
-    //     if (err) throw err;
-    //     inquirer
-    //         .prompt([
-    //             {
-    //                 name: "newTitle",
-    //                 type: "input",
-    //                 message: "Enter employee title:"
-    //             },
-    //             {
-    //                 name: "newSalary",
-    //                 type: "input",
-    //                 message: "Enter employee salary:"
-    //             },
-    //             {
-    //                 name: "departmentId",
-    //                 type: "rawlist",
-    //                 message: "What department does employee belong to?",
-    //                 choices: function chooseDepartment() {
+    connection.query("SELECT * FROM department", function (err, results) {
+        if (err) throw err;
+        inquirer
+            .prompt([
+                {
+                    name: "newTitle",
+                    type: "input",
+                    message: "Enter employee title:"
+                },
+                {
+                    name: "newSalary",
+                    type: "input",
+                    message: "Enter employee salary:"
+                },
+                {
+                    name: "choice",
+                    type: "rawlist",
+                    choices: function chooseDepartment() {
 
-    //                     inquirer.prompt([
-    //                         {
-    //                             name: "choiceDep",
-    //                             type: "rawlist",
-    //                             choices: function () { 
-    //                                     var choiceArray = [];
-    //                                     for (var i = 0; i < results.length; i++) {
-    //                                         choiceArray.push(results[i].name);
-    //                                     }
-    //                                     return choiceArray;
-    //                                 },
-    //                                 message: "What department does employee belong to?"
-    //                         },
-    //                     ])
-    //                 }
-    //             },
-    //         ])
-    //         .then(function (answer) {
-    //             connection.query(
-    //                 "INSERT into role SET ?",
-    //                 {
-    //                     title: answer.newTitle,
-    //                     salary: answer.newSalary,
-    //                     department_id: answer.departmentId,
-    //                 },
-    //                 function (err) {
-    //                     if (err) throw err;
-    //                     console.log("Your new employee tab was created successfully!");
+                        inquirer.prompt([
+                            {
+                                name: "choiceDep",
+                                type: "rawlist",
+                                choices: function () { 
+                                        var choiceArray = [];
+                                        for (var i = 0; i < results.length; i++) {
+                                            choiceArray.push(results[i].name);
+                                        }
+                                        return choiceArray;
+                                    },
+                                    message: "What department does employee belong to?"
+                            },
+                        ])
+                    }
+                },
+            ])
+            .then(function (answer) {
+                connection.query(
+                    "INSERT into role SET ?",
+                    {
+                        title: answer.newTitle,
+                        salary: answer.newSalary,
+                        department_id: answer.departmentId,
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your new employee tab was created successfully!");
 
-    //                     loadMainMenu();
-    //                 }
-    //             );
-    //         })
-    // });
+                        loadMainMenu();
+                    }
+                );
+            })
+    });
 }
 
 function addEmp() {
@@ -225,6 +225,7 @@ function addEmp() {
         )
     })
 }
+
 function viewDep() {
 
 }
