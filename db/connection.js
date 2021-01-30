@@ -13,14 +13,15 @@ const connection = mysql.createConnection({
     database: "employees"
 })
 
+
 //Runs connection
-connection.connect()
+connection.connect(function(err) {
+    if (err) throw err;
+  console.log("connected as id " + connection.threadId + "\n");
+});
 
 
-// connection.connect(function(err) {
-//     if (err) throw err;
-//   console.log("connected as id " + connection.threadId + "\n");
-// });
+// connection.connect()
 
 
 // Runs asyn function

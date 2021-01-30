@@ -94,11 +94,16 @@ function handleChoices(answer) {
         case "update_employee_role":
             return updateEmpRole();
         case "EXIT":
+            console.log("Goodbye!");
             return connection.end();
         
     
         
     }
+}
+
+function viewDep() {
+    
 }
 
 function viewEmp() {

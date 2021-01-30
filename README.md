@@ -3,7 +3,7 @@
 
 
 ## Description 
-My challenge was to architect and build a solution for managing a company's employees using node, inquirer, and MySQL. The objective is to create an interface that amkes it easy for non-developers to view and interact with information stored in databases, also known as Content Management Systems.
+My challenge was to architect and build a solution for managing a company's employees using node, inquirer, and MySQL. The objective is to create an interface that makes it easy for non-developers to view and interact with information stored in databases, also known as Content Management Systems.
 
 ## Table of Contents (Optional)
 
