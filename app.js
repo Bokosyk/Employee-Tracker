@@ -8,19 +8,16 @@ const inquirer = require("inquirer");
 
 // require("console.table");
 
-function init() {
+//Runs app
+loadMainMenu();
+
+// Loads main menu
+function loadMainMenu() {
 
     // Renders art logo
     const logoText = logo({ name: "Leandros Employee Manager" }).render();
     console.log(logoText)
 
-    // runs function
-    loadMainMenu();
-
-}
-
-// Loads main menu
-function loadMainMenu() {
     inquirer
         .prompt([
             {
@@ -120,10 +117,10 @@ function addDep() {
                 },
                 function (err) {
                     if (err) throw err;
-                    console.log("Your department was created successfully!");
+                    console.log("Your department was created successfully! \n");
 
                     //load the main menu again
-                    init();
+                    loadMainMenu();
 
                 }
             );
@@ -222,7 +219,7 @@ function addEmp() {
                 if (err) throw err;
                 console.log("You added a new employee to the database.");
 
-                init();
+                loadMainMenu();
             }
         )
     })
@@ -249,7 +246,7 @@ function viewDep() {
         ])
         .then(function() {
 
-            init()
+            loadMainMenu()
         })
 
 }
@@ -271,16 +268,34 @@ function viewRole() {
         ])
         .then(function() {
 
-            init()
+            loadMainMenu()
         })
 
 }
+//Works but looks janky.
 function viewEmp() {
 
+    connection.query("SELECT * FROM employee", function(err, results) {
+        if (err) throw err;
+        console.table(results);
+    })
+
+    inquirer
+        .prompt([
+            {
+                name: "return",
+                type: "confirm",
+                message: "Go back to main menu?"
+            }
+        ])
+        .then(function() {
+
+            loadMainMenu()
+        })
+
 }
+
 function updateEmpRole() {
 
 }
 
-// Runs function
-init();
